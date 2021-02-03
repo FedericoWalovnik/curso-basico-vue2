@@ -5,11 +5,24 @@ new Vue({
     return {
       courses: [],
       title: "",
-      time: "",
+      time: 0,
     };
   },
 
-  computed: {},
+  computed: {
+    totalTime() {
+      let timeT = 0;
+      this.courses.forEach((course) => {
+        timeT += parseInt(course.time);
+      });
+      return timeT;
+    },
+  },
 
-  methods: {},
+  methods: {
+    addCourse() {
+      this.courses.push({ title: this.title, time: this.time });
+      console.log({ title: this.title, time: this.time });
+    },
+  },
 });
